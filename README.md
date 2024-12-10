@@ -60,7 +60,7 @@ Para avaliar a eficiência da sua solução:
 ### Requisitos
 
 - Python 3.8 ou superior.
-- Bibliotecas adicionais (se necessário) estão listadas no ficheiro `requirements.txt`. Para instalá-las, execute:
+- Bibliotecas adicionais estão listadas no ficheiro `requirements.txt`. Para instalá-las, execute:
 
   ```bash
   pip install -r requirements.txt
