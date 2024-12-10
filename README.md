@@ -15,7 +15,7 @@ Este repositório contém os **testes públicos** e os **scripts Python** utiliz
 - `proj2/`
   - `tests/`
     - Contém os **testes públicos** fornecidos para validar as soluções dos projetos.
-    - Cada teste inclui um ficheiro de entrada (`input`) e um ficheiro de saída esperado (`output`). 
+    - Cada teste inclui um ficheiro de entrada (`.in`) e um ficheiro de saída esperado (`.out`). 
   - `speed_test.py`
     - Executa testes automaticamente.
     - Mede o desempenho (tempo de execução) das implementações submetidas.
