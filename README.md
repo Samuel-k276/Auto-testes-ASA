@@ -74,8 +74,3 @@ O ficheiro `requirements.txt` inclui as seguintes dependências:
 matplotlib
 numpy
 ```
-
-### Licença
-
-Este repositório é fornecido sob a licença MIT. Consulte o ficheiro `LICENSE` para mais detalhes.
-
