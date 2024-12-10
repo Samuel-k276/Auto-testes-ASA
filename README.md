@@ -1,21 +1,81 @@
-# Auto-testes-ASA
+# README
 
-Este repositório tem apenas um ficheiro .py que produz o gráfico do T(f(n,m)) em funçao de f(n,m).
+## Projetos de ASA - Testes Públicos e Medição de Desempenho
 
-Talvez tenham de instalar algumas bibliotecas de python.
+Este repositório contém os **testes públicos** e os **scripts Python** utilizados para medir a eficiência e a velocidade de projetos desenvolvidos na disciplina **Análise e Síntese de Algoritmos (ASA)** do Instituto Superior Técnico (IST).
 
-- Cria um teste random em funcao de n e m
+### Estrutura do Repositório
 
-- Mede o tempo que o executável demora a passar esse teste
+- `proj1/`
+  - `speed_test.py`
+    - Cria testes aleatórios para um determinado intervalo de parametros e executa-os automaticamente.
+    - Mede o desempenho (tempo de execução) das implementações submetidas.
+    - Produz um gráfico do Tempo(s) em função de uma F(n,m) especificada.
 
-- Junta os dados todos
+- `proj2/`
+  - `tests/`
+    - Contém os **testes públicos** fornecidos para validar as soluções dos projetos.
+    - Cada teste inclui um ficheiro de entrada (`input`) e um ficheiro de saída esperado (`output`). 
+  - `speed_test.py`
+    - Executa testes automaticamente.
+    - Mede o desempenho (tempo de execução) das implementações submetidas.
+    - Produz um gráfico do Tempo(s) em função de uma F(n,m,l) especificada.
 
-- Produz um gráfico com a curva que melhor se aproxima
+- `proj3/`
+  - Ainda vazio.
 
-A funcao f(n,m) (i.e. nm^2) pode ser alterada na variável f_n_m (vem por default nm)
+### Como Utilizar
 
-Atençao tambem ao caminho que indicam na variável "executavel" para o .py encontrar o vosso código, que deve estar compilado num exuctavel.
+#### 1. Executar Testes Públicos
 
-O .py testa para n ∈ [5, 100] e m ∈ [10, 1000]
+Para validar o seu código utilizando os testes públicos:
 
-O .py tambem cria um "test.in" para armazenar temporariamente os testes random que cria.
+1. Certifique-se de que o código compilado tem o nome "projX" e que se encontra ao mesmo nível da pasta "tests/".
+2. Execute os testes:
+
+   ```bash
+   cd tests
+   make
+   ```
+
+3. O script irá:
+   - Comparar a saída gerada pelo seu programa com a saída esperada.
+   - Indicar quais testes passaram ou falharam.
+
+#### 2. Medir Desempenho
+
+Para avaliar a eficiência da sua solução:
+
+1. Certifique-se de que o código compilado tem o nome "projX" e que se encontra ao mesmo nível do script "speed_test.py".
+2. Execute o script de medição de desempenho:
+
+   ```bash
+   python3 speed_test.py
+   ```
+
+3. O script irá:
+   - Executar a sua solução com os testes fornecidos.
+   - Medir e registar o tempo de execução de cada teste.
+
+### Requisitos
+
+- Python 3.8 ou superior.
+- Bibliotecas adicionais (se necessário) estão listadas no ficheiro `requirements.txt`. Para instalá-las, execute:
+
+  ```bash
+  pip install -r requirements.txt
+  ```
+  
+### Ficheiro `requirements.txt`
+
+O ficheiro `requirements.txt` inclui as seguintes dependências:
+
+```
+matplotlib
+numpy
+```
+
+### Licença
+
+Este repositório é fornecido sob a licença MIT. Consulte o ficheiro `LICENSE` para mais detalhes.
+
