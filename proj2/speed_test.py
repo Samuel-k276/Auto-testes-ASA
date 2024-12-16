@@ -3,58 +3,56 @@ import subprocess
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Caminho para o executável a ser testado
-executavel = "./proj2"
+# Path to the executable
+executable = "./proj2"
 
 
-# Dicionários para guardar tempos de execução
-tempos = []
+# Create a list to store the execution times and the values of f(n,m,l)
+times = []
+f_nml = []
 
-big_o = []
-
-# Testes de velocidade na pasta tests
-for i in range(200):
+# Teste the speed of the executable with all the tests
+for i in range(0, 50):
    with open(f"tests/test_{i:02d}.in", "r") as f:
-      linha = f.readline()
-      linha = linha.split()
-      n = int(linha[0])
-      m = int(linha[1])
-      l = int(linha[2])
-      big_o.append((n+m)*l)
+      line = f.readline()
+      line = line.split()
+      n = int(line[0])
+      m = int(line[1])
+      l = int(line[2])
+      f_nml.append(m*l+(l*n)*l)
 
       f.close()
 
-   # Mede o tempo antes da execução
-   inicio = time.time()
-    
-   # Executa o programa com o input do ficheiro
-   with open(f"tests/test_{i:02d}.in", "r") as entrada:
-      subprocess.run([executavel], stdin=entrada, stdout=subprocess.DEVNULL)
-    
-   # Mede o tempo após a execução
-   fim = time.time()
+   start = time.time()
+   
+   # Run the executable with the input file
+   with open(f"tests/test_{i:02d}.in", "r") as input_file:
+      subprocess.run([executable], stdin=input_file, stdout=subprocess.DEVNULL)
+   
+   end = time.time()
 
-   # Calcula o tempo total
-   tempo_execucao = fim - inicio
-   tempos.append(tempo_execucao)
+   # Calculate the execution time
+   execution_time = end - start
+   
+   times.append(execution_time)
 
-   print(f"Teste {i:02d} concluído. Tempo de execução: {tempo_execucao:.4f} segundos")
+   print(f"Teste {i:02d} concluído. Tempo de execução: {execution_time:.4f} segundos")
    
 
-# Plota os pontos de dados originais
-plt.scatter(big_o, tempos, label="Dados experimentais", alpha=0.5, color="blue")
+# Plot all the data
+plt.scatter(f_nml, times, label="Dados experimentais", alpha=0.5, color="blue")
 
-# Ajusta uma curva polinomial de tendência para todos os dados combinados
-degree = 2  # Ajusta o grau conforme necessário
-coef = np.polyfit(big_o, tempos, degree)
+# Ajust a curve of degree 2
+degree = 2
+coef = np.polyfit(f_nml, times, degree)
 poly_fn = np.poly1d(coef)
 
-# Plota a curva de ajuste
-sorted_nm_values = sorted(big_o)  # Ordena para uma curva suave
-plt.plot(sorted_nm_values, poly_fn(sorted_nm_values), '--', label="Tendência global", color="red")
+# Plot the curve
+sorted_nml_values = sorted(f_nml)
+plt.plot(sorted_nml_values, poly_fn(sorted_nml_values), '--', label="Tendência global", color="red")
 
-plt.xlabel("f(n,m,l) = (n + m)*l")
-plt.ylabel("Tempo de execução (segundos)")
+plt.xlabel("f(n,m,l) = (l+n)*l+(m*l)")
+plt.ylabel("Time(s)")
 plt.title("Curva de tendência para tempo de execução em função de f(n,m,l)")
 plt.legend()
 plt.show()
