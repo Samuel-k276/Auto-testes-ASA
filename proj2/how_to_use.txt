@@ -1,0 +1,2 @@
+Correr o test_generator.py (Demora algum tempo).
+Correr o speed_test
