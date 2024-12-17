@@ -13,7 +13,7 @@ def generate_tests(n, m, l, b, path):
 
 
 for n in range(0, 50):
-    print(n)
+    print("A fazer o test", n)
     generate_tests(50000+(n+1)*5000, 100000+(n+1)*10000, int(100+20*math.log(n+1)), 1, f"tests/test_{n:02d}.in")
 
 
